@@ -185,7 +185,7 @@ export class Application {
   }
 }
 
-if (require.main === module) {
+if (process.env.NODE_ENV !== "test") {
   const app = new Application();
   app.start();
 }

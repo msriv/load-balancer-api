@@ -266,7 +266,7 @@ export class LoadBalancerService {
 }
 
 // Start the service
-if (require.main === module) {
+if (process.env.NODE_ENV !== "test") {
   const service = new LoadBalancerService();
   service.start();
 }

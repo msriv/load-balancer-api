@@ -4,9 +4,9 @@
   "type": "module",
   "main": "src/application.js",
   "scripts": {
-    "start": "node src/application.js",
-    "test": "jest",
-    "start:lb": "node src/load-balancer/service.js"
+    "start": "NODE_ENV=production node src/application.js",
+    "test": "NODE_ENV=test jest",
+    "start:lb": "NODE_ENV=production node src/load-balancer/service.js"
   },
   "keywords": [],
   "author": "",
