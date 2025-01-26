@@ -1,6 +1,6 @@
 import http from "node:http";
 import { LoadBalancerService } from "../src/load-balancer/service";
-import { StaticLoadBalancer } from "../src/load-balancer/StaticLoadBalancer";
+import { RRLoadBalancer } from "../src/load-balancer/RRLoadBalancer";
 import { LRTLoadBalancer } from "../src/load-balancer/LRTLoadBalancer";
 import request from "supertest";
 import nock from "nock";
@@ -32,7 +32,7 @@ jest.mock("../src/config/config", () => ({
   __esModule: true,
   default: {
     loadBalancer: {
-      type: "static",
+      type: "rr",
     },
     backendServices: [
       { host: "localhost", port: 3000 },
@@ -45,9 +45,9 @@ jest.mock("../src/config/config", () => ({
   },
 }));
 
-// Mock the StaticLoadBalancer
-jest.mock("../src/load-balancer/StaticLoadBalancer", () => ({
-  StaticLoadBalancer: jest.fn().mockImplementation(() => ({
+// Mock the RRLoadBalancer
+jest.mock("../src/load-balancer/RRLoadBalancer", () => ({
+  RRLoadBalancer: jest.fn().mockImplementation(() => ({
     registerService: jest.fn(),
     getNextService: jest.fn(),
     services: [],

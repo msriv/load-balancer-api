@@ -1,6 +1,6 @@
 export default {
   loadBalancer: {
-    type: process.env.LOAD_BALANCER_TYPE || "static",
+    type: process.env.LOAD_BALANCER_TYPE || "rr",
   },
   backendServices: [
     { host: "localhost", port: 3000 },

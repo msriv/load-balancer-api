@@ -1,5 +1,5 @@
 import http from "node:http";
-import { StaticLoadBalancer } from "./StaticLoadBalancer.js";
+import { RRLoadBalancer } from "./RRLoadBalancer.js";
 import { LRTLoadBalancer } from "./LRTLoadBalancer.js";
 import { logger } from "../utils/logger.js";
 import config from "../config/config.js";
@@ -15,8 +15,8 @@ export class LoadBalancerService {
   initializeLoadBalancer(logger) {
     const type = config.loadBalancer.type.toLowerCase();
     switch (type) {
-      case "static":
-        return new StaticLoadBalancer(logger);
+      case "rr":
+        return new RRLoadBalancer(logger);
       case "lrt":
         return new LRTLoadBalancer(logger);
       default:

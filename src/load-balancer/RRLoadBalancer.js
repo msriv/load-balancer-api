@@ -1,6 +1,6 @@
 import { BaseLoadBalancer } from "./BaseLoadBalancer.js";
 
-export class StaticLoadBalancer extends BaseLoadBalancer {
+export class RRLoadBalancer extends BaseLoadBalancer {
   constructor(logger) {
     super(logger);
     this.currentIndex = 0;

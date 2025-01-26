@@ -1,9 +1,9 @@
-import { StaticLoadBalancer } from "../src/load-balancer/StaticLoadBalancer";
+import { RRLoadBalancer } from "../src/load-balancer/RRLoadBalancer";
 
 // Mock the BaseLoadBalancer
 jest.mock("../src/load-balancer/BaseLoadBalancer");
 
-describe("StaticLoadBalancer", () => {
+describe("RRLoadBalancer", () => {
   let loadBalancer;
   let mockLogger;
 
@@ -18,7 +18,7 @@ describe("StaticLoadBalancer", () => {
     };
 
     // Initialize the load balancer
-    loadBalancer = new StaticLoadBalancer(mockLogger);
+    loadBalancer = new RRLoadBalancer(mockLogger);
   });
 
   describe("constructor", () => {
