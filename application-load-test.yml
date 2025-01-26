@@ -1,0 +1,31 @@
+config:
+  target: http://localhost:5000
+  phases:
+    - duration: 30
+      arrivalRate: 1
+      rampTo: 2
+      name: Warm up phase
+    - duration: 30
+      arrivalRate: 2
+      rampTo: 5
+      name: Ramp up load
+    - duration: 15
+      arrivalRate: 5
+      name: Steady phase
+  plugins:
+    ensure: {}
+    metrics-by-endpoint: {}
+  ensure:
+    thresholds:
+      - http.response_time.p99: 100
+      - http.response_time.p95: 75
+scenarios:
+  - flow:
+      - loop:
+          - post:
+              url: "/"
+              json:
+                game: "Mobile Legends"
+                gamerID: "GYUTDTE"
+                points: 20
+    count: 100

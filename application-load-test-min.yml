@@ -1,0 +1,17 @@
+config:
+  target: http://localhost:5000
+  phases:
+    - duration: 10
+      arrivalRate: 1
+      name: Quick test
+  plugins:
+    ensure: {}
+
+scenarios:
+  - flow:
+      - post:
+          url: "/"
+          json:
+            game: "Mobile Legends"
+            gamerID: "TEST123"
+            points: 10
