@@ -63,6 +63,27 @@ This will start multiple backend services and the load balancer.
 
 ## Testing
 
+### Unit Testing
+
+Run the unit tests using Jest:
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage report
+npm test -- --coverage
+
+# Run tests in watch mode (useful during development)
+npm test -- --watch
+
+# Run specific test file
+npm test -- application.test.js
+```
+
+Test files are located in the `__tests__` directory and follow the naming convention `*.test.js`.
+
+Coverage reports can be found in the `coverage` directory after running tests with the --coverage flag.
+
 ### Manual Testing
 
 Send a test request:
